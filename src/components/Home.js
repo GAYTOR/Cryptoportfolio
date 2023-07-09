@@ -8,25 +8,7 @@ const Home = () => {
       className="bg-gradient bg-secondary bg-opacity-75 text-light d-flex flex-column justify-content-between"
     >
       <div className="container-fluid text-center">
-        <nav
-          className="navbar bg-dark border-bottom border-bottom-dark justify-content-center"
-          data-bs-theme="dark"
-          style={{ width: "100%" }}
-        >
-          <div className="">
-            <a className="navbar-brand" href="#">
-              <img
-                src="/logo.avif"
-                alt="Logo"
-                width="50"
-                height="40"
-                className="d-inline-block align-text-top rounded-circle"
-                style={{ marginRight: "1rem" }}
-              />
-              CryptoPortfolioTracker
-            </a>
-          </div>
-        </nav>
+       
         <div className="mt-5">
           <h3 className="text-body-secondary mb-4">
             Crypto Tracker: All your crypto in one place

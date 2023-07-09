@@ -3,8 +3,7 @@ import axios from "axios";
 
 const Login = () => {
   const [formData, setFormData] = useState({});
-  const [errMsg, setErrMsg] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [responseMessage, setResponseMessage] = useState(null);
 
   const handleChange = (event) => {
     const name = event.target.id;
@@ -16,17 +15,15 @@ const Login = () => {
     event.preventDefault();
     if (formData.username) {
       try {
-        const response = await axios.get("http://localhost:5000/users/", {
+        const response = await axios.post("http://localhost:5000/users/check", {
           username: formData.username,
           password: formData.password,
         });
-        setSuccess(true);
-        setErrMsg(false);
-        console.log(response.data);
+        setResponseMessage(response.data);
+        window.location.href = `/Dashboard?username=${formData.username}`;
       } catch (error) {
         console.error(error);
-        setErrMsg(true);
-        setSuccess(false);
+        setResponseMessage("Error occurred");
       }
     }
     setFormData({});
@@ -60,9 +57,8 @@ const Login = () => {
           <button type="submit" className="btn btn-primary">
             Login
           </button>
-          {errMsg && <p style={{ color: "red", marginLeft: "1rem" }}>ERROR </p>}
-          {success && (
-            <p style={{ color: "green", marginLeft: "1rem" }}>SUCCESS</p>
+          {responseMessage && (
+            <p style={{ marginLeft: "1rem", color: "red" }}>{responseMessage}</p>
           )}
         </form>
       </div>
