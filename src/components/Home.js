@@ -86,9 +86,9 @@ const Home = () => {
               <p className="mb-0">Copyright Crypto Tracker</p>
             </div>
             <div className="col">
-              <img src="/facebook.png" alt="Facebook" className="mx-1" />
-              <img src="/twitter.png" alt="Twitter" className="mx-1" />
-              <img src="/linkedin.png" alt="LinkedIn" className="mx-1" />
+              <img src="/Cryptoportfolio/facebook.png" alt="Facebook" className="mx-1" />
+              <img src="/Cryptoportfolio/twitter.png" alt="Twitter" className="mx-1" />
+              <img src="/Cryptoportfolio/linkedin.png" alt="LinkedIn" className="mx-1" />
             </div>
           </div>
         </div>

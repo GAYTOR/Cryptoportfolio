@@ -13,7 +13,7 @@ const Dashboard = () => {
       const queryParams = new URLSearchParams(location.search);
       const username = queryParams.get("username");
       if (!username) {
-        window.location.href = "/";
+        window.location.href = "/Cryptoportfolio";
       } else {
         try {
           const response = await axios.get(
@@ -59,7 +59,7 @@ const Dashboard = () => {
   const queryParams = new URLSearchParams(location.search);
   const username = queryParams.get("username");
   const handleLogout =()=>{
-    window.location.href = "/";
+    window.location.href = "/Cryptoportfolio";
 
   }
   return (

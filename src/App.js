@@ -15,7 +15,7 @@ function App() {
         <div className="">
           <p className="navbar-brand">
             <img
-              src="/logo.avif"
+              src="/Cryptoportfolio/logo.avif"
               alt="Logo"
               width="50"
               height="40"
@@ -28,7 +28,7 @@ function App() {
       </nav>
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/Cryptoportfolio" element={<Home />} />
           <Route path="/Dashboard" element={<Dashboard />} />
         </Routes>
       </Router>
