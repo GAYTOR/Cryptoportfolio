@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
-import Home from "./components/Home";
+import Home from "/Cryptoportfolio/components/Home";
 import Dashboard from "./components/Dashboard";
 
 function App() {
