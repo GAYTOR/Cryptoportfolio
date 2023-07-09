@@ -19,6 +19,7 @@ const userSchema = new Schema({
     required: true,
     unique: true,
   },
+  asset: [{ token: String, quantity: Number }]
 },);
 
 const User = mongoose.model('User', userSchema);

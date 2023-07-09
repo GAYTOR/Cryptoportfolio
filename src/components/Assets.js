@@ -1,62 +1,79 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import axios from "axios";
 
-const MyForm = () => {
-  const [input1, setInput1] = useState("");
-  const [input2, setInput2] = useState("");
+const Assets = ({ onSelectAsset }) => {
+  const [formData, setFormData] = useState({});
+  const [responseMessage, setResponseMessage] = useState(null);
 
-  const handleInput1Change = (event) => {
-    setInput1(event.target.value);
+  const getQueryParam = (param) => {
+    const searchParams = new URLSearchParams(window.location.search);
+    return searchParams.get(param);
   };
 
-  const handleInput2Change = (event) => {
-    setInput2(event.target.value);
+  const username = getQueryParam("username");
+
+  const handleChange = (event) => {
+    const name = event.target.id;
+    const value = event.target.value;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleAddClick = () => {
-    // Perform the desired action when the "Add" button is clicked
-    console.log(`Input 1: ${input1}`);
-    console.log(`Input 2: ${input2}`);
-    // Reset the input fields
-    setInput1("");
-    setInput2("");
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (formData.token && formData.quantity) {
+      try {
+        const response = await axios.post("http://localhost:5000/users/assets", {
+          username: username,
+          token: formData.token,
+          quantity: formData.quantity,
+        });
+        setResponseMessage(response.data);
+        window.location.reload();
+        // Call the parent component's callback function
+        onSelectAsset(response.data);
+        setFormData({});
+      } catch (error) {
+        console.error(error);
+        setResponseMessage("Error occurred");
+      }
+    }
   };
 
   return (
-    <div className="container">
-      <h3 className="text-body-secondary mb-4 text-center">ADD AN ASSEST</h3>
-      <div className="row">
-        <div className="col-md-4">
-          <div className="form-group">
-            <label htmlFor="input1">Token</label>
+    <div className="col-lg-12" style={{ marginRight: "2rem" }}>
+      <h3 className="text-body-secondary mb-4 text-center">Add an Asset</h3>
+      <div className="d-flex justify-content-center">
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
             <input
               type="text"
+              id="token"
               className="form-control"
-              id="input1"
-              value={input1}
-              onChange={handleInput1Change}
+              value={formData.token || ""}
+              onChange={handleChange}
+              placeholder="Enter Token"
             />
           </div>
-        </div>
-        <div className="col-md-4">
-          <div className="form-group">
-            <label htmlFor="input2">Quantity</label>
+          <div className="mb-3">
             <input
-              type="text"
+              type="number"
+              id="quantity"
               className="form-control"
-              id="input2"
-              value={input2}
-              onChange={handleInput2Change}
+              value={formData.quantity || ""}
+              onChange={handleChange}
+              placeholder="Enter Quantity"
             />
           </div>
-        </div>
-        <div className="col-md-4">
-          <button className="btn btn-primary" onClick={handleAddClick}>
+          <button type="submit" className="btn btn-primary">
             Add
           </button>
-        </div>
+          {responseMessage && (
+            <p style={{ marginLeft: "1rem", color: "red" }}>{responseMessage}</p>
+          )}
+        </form>
       </div>
     </div>
   );
 };
 
-export default MyForm;
+export default Assets;
