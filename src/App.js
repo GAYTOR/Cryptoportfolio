@@ -26,9 +26,9 @@ function App() {
           </p>
         </div>
       </nav>
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router>
         <Routes>
-          <Route path="/Cryptoportfolio" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/Dashboard" element={<Dashboard />} />
         </Routes>
       </Router>
