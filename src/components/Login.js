@@ -20,7 +20,7 @@ const Login = () => {
           password: formData.password,
         });
         setResponseMessage(response.data);
-        window.location.href = `/Dashboard?username=${formData.username}`;
+        window.location.href = `#/Dashboard?username=${formData.username}`;
       } catch (error) {
         console.error(error);
         setResponseMessage("Error occurred");

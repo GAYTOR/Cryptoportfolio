@@ -5,13 +5,8 @@ import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
-    <div style={{ backgroundSize: "cover", minHeight: "100vh" }}
-    className="bg-gradient bg-secondary bg-opacity-75 text-light d-flex flex-column ">
-      <nav
-        className="navbar bg-dark border-bottom border-bottom-dark justify-content-center"
-        data-bs-theme="dark"
-        style={{ width: "100%" }}
-      >
+    <div style={{ backgroundSize: "cover", minHeight: "100vh" }} className="bg-gradient bg-secondary bg-opacity-75 text-light d-flex flex-column">
+      <nav className="navbar bg-dark border-bottom border-bottom-dark justify-content-center" data-bs-theme="dark" style={{ width: "100%" }}>
         <div className="">
           <p className="navbar-brand">
             <img
