@@ -1,5 +1,5 @@
 import Forum from "./Registration"; // Import the Forum component
-import Login from "./Login"; // Import the Forum component
+import {Login} from "./Login"; // Import the Forum component
 
 const Home = () => {
   return (

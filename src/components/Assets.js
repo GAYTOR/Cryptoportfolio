@@ -1,16 +1,13 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 
-const Assets = ({ onSelectAsset }) => {
+const Assets = ({ onSelectAsset, username }) => {
+  const location = useLocation();
   const [formData, setFormData] = useState({});
   const [responseMessage, setResponseMessage] = useState(null);
 
-  const getQueryParam = (param) => {
-    const searchParams = new URLSearchParams(window.location.search);
-    return searchParams.get(param);
-  };
-
-  const username = getQueryParam("username");
+  const queryParams = new URLSearchParams(location.search);
 
   const handleChange = (event) => {
     const name = event.target.id;
@@ -38,6 +35,10 @@ const Assets = ({ onSelectAsset }) => {
       }
     }
   };
+
+  if (!username) {
+    return <p className="text-center">Username is missing.</p>;
+  }
 
   return (
     <div className="col-lg-12" style={{ marginRight: "2rem" }}>

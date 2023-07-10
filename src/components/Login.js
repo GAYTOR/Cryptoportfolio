@@ -1,7 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 
-const Login = () => {
+export let username = ""; // Declare and export the username variable
+
+export const Login = () => {
   const [formData, setFormData] = useState({});
   const [responseMessage, setResponseMessage] = useState(null);
 
@@ -20,6 +22,7 @@ const Login = () => {
           password: formData.password,
         });
         setResponseMessage(response.data);
+        username = formData.username; // Update the exported username variable
         window.location.href = `#/Dashboard?username=${formData.username}`;
       } catch (error) {
         console.error(error);
@@ -65,5 +68,3 @@ const Login = () => {
     </div>
   );
 };
-
-export default Login;

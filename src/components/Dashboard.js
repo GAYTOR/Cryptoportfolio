@@ -92,7 +92,7 @@ const Dashboard = () => {
         </tbody>
       </table>
 
-      <Assets onSelectAsset={handleAssetSelection} />
+      <Assets onSelectAsset={handleAssetSelection} username={username} />
       <br></br>
       <button
         type="button"
